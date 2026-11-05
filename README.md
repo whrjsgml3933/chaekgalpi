@@ -1,5 +1,7 @@
 # 책갈피
 
+[![Django checks](https://github.com/whrjsgml3933/chaekgalpi/actions/workflows/ci.yml/badge.svg)](https://github.com/whrjsgml3933/chaekgalpi/actions/workflows/ci.yml)
+
 **책을 읽은 뒤의 생각을 기록하고, 다른 독자와 나누는 Django 커뮤니티**
 
 개인 학습 프로젝트를 확장한 포트폴리오입니다. 회원·도서·독서 기록의 관계를 설계하고, 작성자 권한·입력 검증·AI 실패 처리까지 구현했습니다. 현재는 로컬에서 실행하는 시연 프로젝트이며 운영 배포나 실사용자 성과를 주장하지 않습니다.
@@ -40,7 +42,12 @@ Bootstrap은 로컬 정적 파일로 포함합니다. 이미지 처리와 환경
 
 ## 빠른 실행 — API 키 없이
 
-Python 3.11 환경에서 저장소 루트로 이동합니다.
+저장소를 내려받은 뒤 Python 3.11 이상 환경에서 실행합니다. CI는 Python 3.11·3.12를 검증합니다.
+
+```bash
+git clone https://github.com/whrjsgml3933/chaekgalpi.git
+cd chaekgalpi
+```
 
 ### macOS / Linux
 
@@ -138,11 +145,11 @@ python manage.py makemigrations --check --dry-run
 python manage.py test
 ```
 
-2026-11-05 기준 Windows·Python 3.11·Django 5.2.19에서 **자동 테스트 69개**, Ruff 검사·포맷, 마이그레이션 일치 검사와 키 없는 데모 브라우저 조작을 확인했습니다. Python 3.12·Linux의 CI 결과는 아직 확인하지 않았습니다.
+2026-11-05 기준 Windows·Python 3.11·Django 5.2.19에서 **자동 테스트 69개**, Ruff 검사·포맷, 마이그레이션 일치 검사와 키 없는 데모 브라우저 조작을 확인했습니다. GitHub Actions의 Ubuntu·Python 3.11/3.12에서도 각 69개 테스트와 모든 검증 단계가 통과했습니다.
 
 기능 회귀 테스트 외에 환경 설정과 데모 데이터 재현성도 검사합니다. 외부 AI API는 자동 테스트에서 모의 처리하므로 유료 키가 필요하지 않습니다. 실제 GMS 호출과 브라우저 조작은 별도로 확인했으며 성능 수치·운영 지표로 제시하지 않습니다.
 
-GitHub Actions는 Python 3.11·3.12에서 린트·포맷·Django 검사·마이그레이션 일치·전체 테스트·새 DB 데모 생성을 실행하도록 구성했습니다. **GitHub 실행 결과는 저장소에 게시한 뒤 확인할 수 있습니다.** 로컬 검증 결과와 원격 CI 성공을 구분합니다.
+GitHub Actions는 Python 3.11·3.12에서 린트·포맷·Django 검사·마이그레이션 일치·전체 테스트·새 DB 데모 생성을 실행하도록 구성했습니다. [첫 공개 커밋의 CI 실행 기록](https://github.com/whrjsgml3933/chaekgalpi/actions/runs/41984266840)에서 두 Python 버전의 성공 결과를 확인할 수 있습니다. 상단 배지는 최신 실행 상태를 표시합니다.
 
 ## 코드 살펴보기
 
