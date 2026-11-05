@@ -1,0 +1,5 @@
+<div class="modal fade" id="delete-dialog" tabindex="-1" aria-labelledby="delete-dialog-title" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+<div class="modal-header"><h2 class="modal-title fs-5" id="delete-dialog-title">{{ delete_title }}</h2><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="닫기"></button></div>
+<div class="modal-body"><p class="mb-0">{{ delete_description }}</p></div>
+<div class="modal-footer"><button class="btn btn-outline-secondary" type="button" data-bs-dismiss="modal">취소</button><form action="{{ delete_url }}" method="post" class="m-0">{% csrf_token %}<button class="btn btn-danger" type="submit">{{ delete_title }}</button></form></div>
+</div></div></div>

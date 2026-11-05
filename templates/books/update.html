@@ -1,0 +1,7 @@
+{% extends 'includes/form_page.html' %}
+{% block title %}도서 수정{% endblock %}
+{% block breadcrumb_title %}도서 수정{% endblock %}
+{% block heading %}도서 수정{% endblock %}
+{% block intro %}책에 대한 정보를 정확하게 다듬어 주세요.{% endblock %}
+{% block form_content %}{% url 'books:detail' book.pk as cancel_url %}{% include 'includes/form.html' with submit_label='저장' %}{% endblock %}
+{% block after_form %}{% endblock %}

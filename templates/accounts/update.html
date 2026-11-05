@@ -1,0 +1,7 @@
+{% extends 'includes/form_page.html' %}
+{% block title %}회원정보 수정{% endblock %}
+{% block breadcrumb_title %}회원정보 수정{% endblock %}
+{% block heading %}회원정보 수정{% endblock %}
+{% block intro %}독서 취향과 나를 소개하는 정보를 관리하세요.{% endblock %}
+{% block form_content %}{% url 'accounts:profile' user.pk as cancel_url %}{% include 'includes/form.html' with submit_label='저장' %}{% endblock %}
+{% block after_form %}<p class="text-secondary mt-4">비밀번호를 바꾸려면 <a href="{% url 'accounts:change_password' %}">비밀번호 변경</a>을 이용하세요.</p>{% endblock %}

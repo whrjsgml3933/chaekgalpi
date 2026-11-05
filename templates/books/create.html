@@ -1,0 +1,7 @@
+{% extends 'includes/form_page.html' %}
+{% block title %}도서 등록{% endblock %}
+{% block breadcrumb_title %}도서 등록{% endblock %}
+{% block heading %}도서 등록{% endblock %}
+{% block intro %}함께 읽고 싶은 책을 서재에 소개해 주세요.{% endblock %}
+{% block form_content %}{% url 'books:index' as cancel_url %}{% include 'includes/form.html' with submit_label='등록' %}{% endblock %}
+{% block after_form %}{% endblock %}

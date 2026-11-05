@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+<div class="form-layout {% block form_width %}{% endblock %}">
+<nav aria-label="현재 위치"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{% url 'books:index' %}">우리의 서재</a></li><li class="breadcrumb-item active" aria-current="page">{% block breadcrumb_title %}{% endblock %}</li></ol></nav>
+<div class="page-intro"><h1 class="mb-3">{% block heading %}{% endblock %}</h1><p class="reading-lead mb-0">{% block intro %}{% endblock %}</p></div>
+<div class="form-panel">{% block form_content %}{% endblock %}</div>
+{% block after_form %}{% endblock %}
+</div>
+{% endblock %}

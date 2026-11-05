@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% block content %}
+<section class="library-hero" aria-labelledby="library-title">
+<div class="page-intro"><p class="section-caption">우리의 서재</p><h1 id="library-title" class="mb-3">책 한 권에서 시작되는<br>새로운 이야기.</h1><p class="reading-lead mb-0">읽은 책을 모으고, 마음에 남은 생각을 함께 나누세요.</p></div>
+{% if user.is_authenticated %}<a class="btn btn-primary flex-shrink-0" href="{% url 'books:create' %}">도서 등록</a>{% else %}<a class="btn btn-primary flex-shrink-0" href="{% url 'accounts:signup' %}">나의 서재 시작하기</a>{% endif %}
+</section>
+<section aria-labelledby="book-list-title"><div class="section-heading"><h2 id="book-list-title">함께 읽는 책 <span class="count-pill ms-2">{{ books|length }}권</span></h2><span class="small text-secondary">책을 선택해 독서 기록을 만나보세요</span></div>
+<form class="category-filter d-flex flex-wrap align-items-end gap-2 mb-4" method="get" action="{% url 'books:index' %}"><div><label class="form-label small" for="category-filter">장르별로 보기</label><select class="form-select" id="category-filter" name="category"><option value="">전체 장르</option>{% for category in categories %}<option value="{{ category.pk }}" {% if selected_category.pk == category.pk %}selected{% endif %}>{{ category.name }}</option>{% endfor %}</select></div><button type="submit" class="btn btn-outline-primary">적용</button>{% if selected_category %}<a class="btn btn-link" href="{% url 'books:index' %}">전체 보기</a>{% endif %}</form>
+<div class="row g-4">
+{% for book in books %}<div class="col-md-6 col-lg-4"><article class="book-card card">
+<div class="book-cover {% cycle '' 'cover-slate' 'cover-olive' %}" aria-hidden="true"><span class="cover-title">{{ book.title }}</span><span class="cover-author">{{ book.author }}</span></div>
+<div class="card-body"><h3 class="mb-2"><a class="stretched-link" href="{% url 'books:detail' book.pk %}">{{ book.title }}</a></h3><p class="small text-secondary mb-3">{{ book.author }}{% if book.category %}<span class="genre-label ms-2">{{ book.category.name }}</span>{% endif %}</p><p class="book-excerpt mb-0">{{ book.description }}</p>
+<div class="book-meta"><span class="rating">평점 {{ book.review_score }} / 10</span><span>독서 기록 {{ book.thread_count }}개</span></div></div>
+</article></div>
+{% empty %}<div class="col-12"><div class="empty-state"><div class="empty-symbol" aria-hidden="true">書</div><h2>{% if selected_category %}이 장르의 책을 기다리고 있어요{% else %}서재의 첫 책을 기다리고 있어요{% endif %}</h2><p>등록된 도서가 없습니다. 함께 읽고 싶은 책으로 서재를 채워주세요.</p>{% if user.is_authenticated %}<a class="btn btn-primary" href="{% url 'books:create' %}">첫 도서 등록하기</a>{% else %}<a class="btn btn-primary" href="{% url 'accounts:login' %}">로그인하고 도서 남기기</a>{% endif %}</div></div>{% endfor %}
+</div></section>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'includes/form_page.html' %}
+{% block title %}회원가입{% endblock %}
+{% block breadcrumb_title %}회원가입{% endblock %}
+{% block heading %}회원가입{% endblock %}
+{% block intro %}나만의 서재를 만들고, 책에서 만난 생각을 나누세요.{% endblock %}
+{% block form_content %}{% url 'books:index' as cancel_url %}{% include 'includes/form.html' with submit_label='가입하기' %}{% endblock %}
+{% block after_form %}<p class="text-center text-secondary mt-4">이미 계정이 있나요? <a href="{% url 'accounts:login' %}">로그인</a></p>{% endblock %}

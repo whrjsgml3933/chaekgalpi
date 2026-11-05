@@ -1,0 +1,7 @@
+{% extends 'includes/form_page.html' %}
+{% block title %}독서 기록 작성{% endblock %}
+{% block breadcrumb_title %}독서 기록 작성{% endblock %}
+{% block heading %}독서 기록 작성{% endblock %}
+{% block intro %}마음에 남은 문장과 읽으며 떠오른 생각을 남겨보세요.{% endblock %}
+{% block form_content %}{% url 'books:detail' book.pk as cancel_url %}{% include 'includes/form.html' with submit_label='작성' %}{% endblock %}
+{% block after_form %}<p class="text-secondary mt-4">기록할 도서: <a href="{% url 'books:detail' book.pk %}">{{ book.title }}</a></p>{% endblock %}

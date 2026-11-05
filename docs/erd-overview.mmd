@@ -1,0 +1,73 @@
+erDiagram
+    accounts_user ||--o{ books_book : "도서 등록"
+    accounts_user ||--o{ books_thread : "기록 작성"
+    books_book ||--o{ books_thread : "독서 기록"
+    accounts_user ||--o{ books_comment : "댓글 작성"
+    books_thread ||--o{ books_comment : "댓글"
+    books_category |o--o{ books_book : "장르 분류"
+    accounts_user ||--o{ accounts_user_followings : "팔로우하는 사용자"
+    accounts_user ||--o{ accounts_user_followings : "팔로우받는 사용자"
+    accounts_user ||--o{ books_thread_likes : "좋아요 사용자"
+    books_thread ||--o{ books_thread_likes : "좋아요 기록"
+    accounts_user ||--o{ accounts_user_preferred_categories : "선호 장르 선택"
+    books_category ||--o{ accounts_user_preferred_categories : "선호 장르"
+
+    accounts_user {
+        integer id PK
+        varchar username UK
+        varchar email
+        varchar gender
+        integer age
+        integer weekly_reading_time
+        integer yearly_reading_count
+        varchar profile_image
+    }
+    books_book {
+        integer id PK
+        varchar title
+        text description
+        real review_score
+        varchar author
+        bigint user_id FK
+        bigint category_id FK "NULL 허용"
+        text author_info
+        json author_works
+    }
+    books_thread {
+        integer id PK
+        bigint book_id FK
+        bigint user_id FK
+        varchar title
+        text content
+        date reading_date
+        datetime created_at
+        datetime updated_at
+        varchar cover_image
+        json cover_keywords
+    }
+    books_comment {
+        integer id PK
+        bigint thread_id FK
+        bigint user_id FK
+        text content
+        datetime created_at
+    }
+    books_category {
+        integer id PK
+        varchar name UK
+    }
+    accounts_user_followings {
+        integer id PK
+        bigint from_user_id FK
+        bigint to_user_id FK
+    }
+    books_thread_likes {
+        integer id PK
+        bigint thread_id FK
+        bigint user_id FK
+    }
+    accounts_user_preferred_categories {
+        integer id PK
+        bigint user_id FK
+        bigint category_id FK
+    }

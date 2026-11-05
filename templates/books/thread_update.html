@@ -1,0 +1,7 @@
+{% extends 'includes/form_page.html' %}
+{% block title %}독서 기록 수정{% endblock %}
+{% block breadcrumb_title %}독서 기록 수정{% endblock %}
+{% block heading %}독서 기록 수정{% endblock %}
+{% block intro %}다시 읽으며 떠오른 생각을 기록에 더해보세요.{% endblock %}
+{% block form_content %}{% url 'books:thread_detail' thread.pk as cancel_url %}{% include 'includes/form.html' with submit_label='저장' %}{% endblock %}
+{% block after_form %}{% endblock %}
