@@ -1,5 +1,8 @@
 # 책갈피
 
+> **학습 프로젝트** · 학습 및 실습을 목적으로 진행한 프로젝트입니다.
+
+
 [![Django checks](https://github.com/whrjsgml3933/chaekgalpi/actions/workflows/ci.yml/badge.svg)](https://github.com/whrjsgml3933/chaekgalpi/actions/workflows/ci.yml)
 
 **책을 읽은 뒤의 생각을 기록하고, 다른 독자와 나누는 Django 커뮤니티**
